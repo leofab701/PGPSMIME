@@ -1,0 +1,167 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 Times-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0;}
+\margl1440\margr1440\vieww28600\viewh15020\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Scenario 2 \'97 PGP-Signed + Encrypted (End-to-End)\kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf3 \CocoaLigature0 gpg --no-auto-key-locate --trust-model always \\\
+    --recipient "alice@local" \\\
+    --local-user "bob@local" \\\
+    --armor --sign --encrypt \\\
+    -o /tmp/message.asc /tmp/message.txt\
+\
+\
+cat message.asc \
+\
+-----BEGIN PGP MESSAGE----- **********************************************
+\f1\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 Only Bob\'92s private key + Alice\'92s public key can decrypt.
+\f0\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\
+hQIMA1DfmFHRghvWARAAqLm3LkfFhaKG4b8cO/i6C8uBeOtsj71eKxWoX/NBmiGl\
+gmDrPxzt0aEU1lG4tTypQQU8AZkUS815FCjWxTNQj/xVyipPZMEj0UovpmKua7rC\
+hHwPwYUSb/SNtJq5XlKvRQXA9aHQc1Qj3UQLkauzjjN/u/eZfo1PXG/4c8chptwm\
+zEp7VOBc/3yUSR599H1WruPZvBfGiMjDrRIalKiFlCBSBBN2Wx1R2ottH0qsw5ik\
+5+5gM2qDqKelOHEP20f5ow60qe3y2a6qFfGHyHqSO+aH2Oyhaiby+/vmXGknW2Cv\
+cqFWVkPzfjTDBANs9P64WiXHG2uTIvkKmqO5bkoJqnZNTAsCN2jkR5WMFY+6YOBp\
+1fodOI3HkfuRRT0to8keR56IEy1ji5xSHEm4314mefRineSkJwQlgPp8q3DSBh0m\
+iAdVoS46Q/P7cJFtIyV4QqXrfIa3xy9a9f+0QwKH0LvYrYEb68ReSKTh1H7Bi0KD\
+ZeDLnEIovNr2E2F//I2PS1W8xDZkbCz+YV4xnvTLxQUR2c5CIpbx1rn2HY0SHdAI\
+Qr8jjEk0hPyKlpTmXTMvhB69DagbEbDPMb+1Md+SuI+C1ibjMUisI7OIyOvSOsAS\
+DhHhqUWTOOxTSoREaq73Ic4gfSqQp8uZfcMeCI2k1TsDYGp5wmlT1nmD4wLQG3bS\
+6QGPOR+X+uCp2+gCrBoiuBE4AFXLYOl+tMujzZEgct1q9ITbDoSlWaLa6U79ljUy\
+3dTgx2TOpX51LAiXc+VBbD1d4SEy3GxfpOknxUG4wDq9oUWXT8dZJhiSFsffl/mn\
+nFjHlsOJvrhrzb+q3FLVX2qqf/IVl33JHkRubvOyDHpgVJuUJfFqxwzDziyKgqzO\
+Tzfhi9Aj/xs5BGHcSXliLqfdY7VTGBhApe2A3jJrxmcK5tXPRsb1qoj9UWHkjsui\
+Z5e8ZeLvgq2zdybiKTNDY7AippgGU5jf8nU4192N0GTa5PWRi+dimOyjZ99Dgmy3\
+vlKeb4a27fxoakjXokHDIq7kt0Gq5Yrd4Mi56pwtbNImcXhaG0BanuLAhWLeC73/\
++lnyCsSoxcNhmP1Ise6OC1ca8veGhc4eNx9+h9CQucfTGA52pOLMfKGD7t1AC6KO\
+U7EHara1ImSWvSyJ/46/fFGt/DNuJ1YjugRGjSht7/GzuL2jMPWI0vqD5HYgTAN+\
+SZdd0dGHp9VHb6YgIAjwuEuPCYhFeBV317VJcNqFaZDSM+L9lKc0qxi4t/aFSZcQ\
+BKuHsAbejrf3xA3LSQ3v0vSyf+gwFF0ERZLviN6P1RwR1ZPnEafgC9DNtZ20vuL1\
+b12CZPX71bF3zk1BPXdzDS0GpxJFJ9J5HjwyspYyzHNLwCgw0gETZnMqFdLHAFVI\
+6sgKLTbypvQ/yoy9td6EDJABBoaauS1Rv6bxY6WXqZsNK1tp6kUqodJiQtHgkzxS\
+GiKb3fkEBTgke44gR7M83MhIzCaCZSpSmkUn3sSC96hIvN19SxkOhKFC3i7tvpZl\
+do9Uuk8TQpMmqNmAB2tybA6vknObhVz8/fYfeUBmJys0Whf6uLvPURtLBX18k8XT\
+wXU+jW5Nzd/pG2bpanoCSXzQFStZwcJpPaUH+m5H1zqcWkQahMJPtn6BGgnYXfen\
+bUD/+nkYnXuV6dBklc8zQCggwWa+g3DsfDjz\
+=uIvR\
+-----END PGP MESSAGE----- ************************************
+\f1\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 This represents 
+\f2\b \strokec2 true end-to-end confidentiality and integrity
+\f1\b0 \strokec2  at the message layer
+\f0\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+\
+swaks --server mail.local --port 587 --tls \\\
+  --auth PLAIN --auth-user 'bob@local' --auth-password \'91XXXXXXXX\'92 \\\
+  --from bob@local --to alice@local \\\
+  --header "Subject: PGP signed+encrypted (inline)" \\\
+  --body @/tmp/message.asc\
+\
+=== Trying mail.local:587...\
+=== Connected to mail.local.\
+<-  220 mail.local ESMTP Postfix (Debian/GNU)\
+ -> EHLO xxxxxxx.local\
+<-  250-mail.local\
+<-  250-PIPELINING\
+<-  250-SIZE 10240000\
+<-  250-VRFY\
+<-  250-ETRN\
+<-  250-STARTTLS\
+<-  250-ENHANCEDSTATUSCODES\
+<-  250-8BITMIME\
+<-  250-DSN\
+<-  250-SMTPUTF8\
+<-  250 CHUNKING\
+ -> STARTTLS\
+<-  220 2.0.0 Ready to start TLS\
+=== TLS started with cipher TLSv1.3:AEAD-AES256-GCM-SHA384:256 *****************************
+\f1\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 Transport layer still encrypted exactly like baseline.
+\f0\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+=== TLS client certificate not requested and not sent\
+=== TLS no client certificate set\
+=== TLS peer[0]   subject=[/CN=mail.local/O=Lab/OU=Email]\
+===               commonName=[mail.local], subjectAltName=[] notAfter=[2026-10-12T15:51:56Z]\
+=== TLS peer certificate failed CA verification (self signed certificate), passed host verification (using host mail.local to verify)\
+ ~> EHLO XXXXXX.local\
+<~  250-mail.local\
+<~  250-PIPELINING\
+<~  250-SIZE 10240000\
+<~  250-VRFY\
+<~  250-ETRN\
+<~  250-AUTH PLAIN LOGIN\
+<~  250-ENHANCEDSTATUSCODES\
+<~  250-8BITMIME\
+<~  250-DSN\
+<~  250-SMTPUTF8\
+<~  250 CHUNKING\
+ ~> AUTH PLAIN AGJvYkBsb2NhbABTb3l0aWMyMC4=\
+<~  235 2.7.0 Authentication successful ******************************
+\f1\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 Auth OK inside TLS.
+\f0\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+ ~> MAIL FROM:<bob@local>\
+<~  250 2.1.0 Ok\
+ ~> RCPT TO:<alice@local>\
+<~  250 2.1.5 Ok\
+ ~> DATA\
+<~  354 End data with <CR><LF>.<CR><LF>\
+ ~> Date: Wed, 15 Oct 2025 22:57:35 -0400\
+ ~> To: alice@local\
+ ~> From: bob@local\
+ ~> Subject: PGP signed+encrypted (inline)\
+ ~> Message-Id: <20251015225735.027963@XXXXXXXXX.local>\
+ ~> X-Mailer: swaks v20240103.0 jetmore.org/john/code/swaks/\
+ ~> \
+ ~> -----BEGIN PGP MESSAGE----- \
+ ~> \
+ ~> hQIMA1DfmFHRghvWARAAqLm3LkfFhaKG4b8cO/i6C8uBeOtsj71eKxWoX/NBmiGl\
+ ~> gmDrPxzt0aEU1lG4tTypQQU8AZkUS815FCjWxTNQj/xVyipPZMEj0UovpmKua7rC\
+ ~> hHwPwYUSb/SNtJq5XlKvRQXA9aHQc1Qj3UQLkauzjjN/u/eZfo1PXG/4c8chptwm\
+ ~> zEp7VOBc/3yUSR599H1WruPZvBfGiMjDrRIalKiFlCBSBBN2Wx1R2ottH0qsw5ik\
+ ~> 5+5gM2qDqKelOHEP20f5ow60qe3y2a6qFfGHyHqSO+aH2Oyhaiby+/vmXGknW2Cv\
+ ~> cqFWVkPzfjTDBANs9P64WiXHG2uTIvkKmqO5bkoJqnZNTAsCN2jkR5WMFY+6YOBp\
+ ~> 1fodOI3HkfuRRT0to8keR56IEy1ji5xSHEm4314mefRineSkJwQlgPp8q3DSBh0m\
+ ~> iAdVoS46Q/P7cJFtIyV4QqXrfIa3xy9a9f+0QwKH0LvYrYEb68ReSKTh1H7Bi0KD\
+ ~> ZeDLnEIovNr2E2F//I2PS1W8xDZkbCz+YV4xnvTLxQUR2c5CIpbx1rn2HY0SHdAI\
+ ~> Qr8jjEk0hPyKlpTmXTMvhB69DagbEbDPMb+1Md+SuI+C1ibjMUisI7OIyOvSOsAS\
+ ~> DhHhqUWTOOxTSoREaq73Ic4gfSqQp8uZfcMeCI2k1TsDYGp5wmlT1nmD4wLQG3bS\
+ ~> 6QGPOR+X+uCp2+gCrBoiuBE4AFXLYOl+tMujzZEgct1q9ITbDoSlWaLa6U79ljUy\
+ ~> 3dTgx2TOpX51LAiXc+VBbD1d4SEy3GxfpOknxUG4wDq9oUWXT8dZJhiSFsffl/mn\
+ ~> nFjHlsOJvrhrzb+q3FLVX2qqf/IVl33JHkRubvOyDHpgVJuUJfFqxwzDziyKgqzO\
+ ~> Tzfhi9Aj/xs5BGHcSXliLqfdY7VTGBhApe2A3jJrxmcK5tXPRsb1qoj9UWHkjsui\
+ ~> Z5e8ZeLvgq2zdybiKTNDY7AippgGU5jf8nU4192N0GTa5PWRi+dimOyjZ99Dgmy3\
+ ~> vlKeb4a27fxoakjXokHDIq7kt0Gq5Yrd4Mi56pwtbNImcXhaG0BanuLAhWLeC73/\
+ ~> +lnyCsSoxcNhmP1Ise6OC1ca8veGhc4eNx9+h9CQucfTGA52pOLMfKGD7t1AC6KO\
+ ~> U7EHara1ImSWvSyJ/46/fFGt/DNuJ1YjugRGjSht7/GzuL2jMPWI0vqD5HYgTAN+\
+ ~> SZdd0dGHp9VHb6YgIAjwuEuPCYhFeBV317VJcNqFaZDSM+L9lKc0qxi4t/aFSZcQ\
+ ~> BKuHsAbejrf3xA3LSQ3v0vSyf+gwFF0ERZLviN6P1RwR1ZPnEafgC9DNtZ20vuL1\
+ ~> b12CZPX71bF3zk1BPXdzDS0GpxJFJ9J5HjwyspYyzHNLwCgw0gETZnMqFdLHAFVI\
+ ~> 6sgKLTbypvQ/yoy9td6EDJABBoaauS1Rv6bxY6WXqZsNK1tp6kUqodJiQtHgkzxS\
+ ~> GiKb3fkEBTgke44gR7M83MhIzCaCZSpSmkUn3sSC96hIvN19SxkOhKFC3i7tvpZl\
+ ~> do9Uuk8TQpMmqNmAB2tybA6vknObhVz8/fYfeUBmJys0Whf6uLvPURtLBX18k8XT\
+ ~> wXU+jW5Nzd/pG2bpanoCSXzQFStZwcJpPaUH+m5H1zqcWkQahMJPtn6BGgnYXfen\
+ ~> bUD/+nkYnXuV6dBklc8zQCggwWa+g3DsfDjz\
+ ~> =uIvR\
+ ~> -----END PGP MESSAGE-----\
+ ~> \
+ ~> \
+ ~> .\
+<~  250 2.0.0 Ok: queued as 19B4116B0EE ***********************************************
+\f1\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1  Delivery succeeded; message body fully armored PGP block.
+\f0\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+ ~> QUIT\
+<~  221 2.0.0 Bye\
+=== Connection closed with remote host.}
