@@ -1,0 +1,159 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0;}
+\margl1440\margr1440\vieww28600\viewh15020\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Scenario 3 \'97 S/MIME (signed 
+\f1\b then
+\f0\b0  encrypted)\kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx7970\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf3 \CocoaLigature0 % openssl smime -sign \\ *************************Message signed (smime)\
+  -in message.txt \\\
+  -signer bob.crt \\\
+  -inkey bob.key \\\
+  -out signed.eml \\\
+  -outform PEM\
+\
+% openssl smime -encrypt \\ *********************Message encrypted (smime)\
+  -in signed.eml \\\
+  -out smime.eml \\\
+  -outform PEM \\\
+  alice.crt\
+\
+% swaks --server mail.local --port 587 --tls \\*******************************swaks start sending the message\
+  --auth PLAIN --auth-user 'bob@local' --auth-password \'91XXXXXXXXX\'92 \\\
+  --from bob@local --to alice@local \\\
+  --header "Subject: S/MIME signed+encrypted test" \\\
+  --data @smime.eml\
+\
+\
+\
+=== Trying mail.local:587...\
+=== Connected to mail.local.\
+<-  220 mail.local ESMTP Postfix (Debian/GNU)\
+ -> EHLO XXXXX.local\
+<-  250-mail.local\
+<-  250-PIPELINING\
+<-  250-SIZE 10240000\
+<-  250-VRFY\
+<-  250-ETRN\
+<-  250-STARTTLS\
+<-  250-ENHANCEDSTATUSCODES\
+<-  250-8BITMIME\
+<-  250-DSN\
+<-  250-SMTPUTF8\
+<-  250 CHUNKING\
+ -> STARTTLS\
+<-  220 2.0.0 Ready to start TLS\
+=== TLS started with cipher TLSv1.3:AEAD-AES256-GCM-SHA384:256*************TLS starts as in the other scenarios for protecting the transaction\
+=== TLS client certificate not requested and not sent\
+=== TLS no client certificate set\
+=== TLS peer[0]   subject=[/CN=mail.local/O=Lab/OU=Email]\
+===               commonName=[mail.local], subjectAltName=[] notAfter=[2026-10-12T15:51:56Z]\
+=== TLS peer certificate failed CA verification (self signed certificate), passed host verification (using host mail.local to verify)\
+ ~> EHLO XXXXXXXXXX.local\
+<~  250-mail.local\
+<~  250-PIPELINING\
+<~  250-SIZE 10240000\
+<~  250-VRFY\
+<~  250-ETRN\
+<~  250-AUTH PLAIN LOGIN\
+<~  250-ENHANCEDSTATUSCODES\
+<~  250-8BITMIME\
+<~  250-DSN\
+<~  250-SMTPUTF8\
+<~  250 CHUNKING\
+ ~> AUTH PLAIN AGJvYkBsb2NhbABTb3l0aWMyMC4=\
+<~  235 2.7.0 Authentication successful\
+ ~> MAIL FROM:<bob@local>\
+<~  250 2.1.0 Ok\
+ ~> RCPT TO:<alice@local>\
+<~  250 2.1.5 Ok\
+ ~> DATA ******************************************Here starts the body of the message\
+<~  354 End data with <CR><LF>.<CR><LF>\
+\
+ ~> -----BEGIN PKCS7-----\
+ ~> MIILfwYJKoZIhvcNAQcDoIILcDCCC2wCAQAxggFsMIIBaAIBADBQMDgxFTATBgNV\
+ ~> BAMMDExhYi1FbWFpbC1DQTEMMAoGA1UECgwDTGFiMREwDwYDVQQLDAhTZWN1cml0\
+ ~> eQIUQcN81cU71VlhOzOiKq2AW09RoZ0wDQYJKoZIhvcNAQEBBQAEggEAiyrZ/isr\
+ ~> qX2rZa27qWfVn1qkp7F7WhvccazNKJPRmNKvwGPSbkdVo4cWS81o3969ZRC0vsN9\
+ ~> +BrbVr+cT2DZ+SW5zJqXIwV0ld99V+vozsIosw70oc3RWZRt+Amd0RuqPnzqmlzc\
+ ~> pVarTHz3PQg27h2km8NGaMqyg/ZBQi6iaVNkQty3kuLcC9G3x1S5i7X+X6zfa4hA\
+ ~> vWoBB96Dp/mAmKQ5x/UcMwj31n/ef/yT30ibPATF1BfBk0ncCqcJEsALVaQTvCBg\
+ ~> bXVHDqSnDO299WEGQuP8Emx8fpWOJX1b8gpT9qZn1tctcCtKh0WLamHmmGWWcYZZ\
+ ~> rtc2BO13IVPLvzCCCfUGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQITbuCIq3oB/WA\
+ ~> ggnQPKSVDCvDqN05E5zkvh3P2Lgv94dxq07cxM4De4np1OZQ7LB5B2g5J+EkWFxJ\
+ ~> iygWUGkoLUaZ0uW1FqCxmGr319rIf3Zp2MC8X2lBoI5Y4ATOqWNc5u2BxvyiajOa\
+ ~> UvJDgYNBAek4fAs+epcIxS6fTLtCCVpcMaFVuykYUo+DyUfHK1AptCL/e85dFDvr\
+ ~> TX0CnaT/5zjYJJ6YxZlJuzzABPxvcbnOXsiIswWiYGUD285AIcytN8AY+aDzaE8U\
+ ~> AJgATXkojlSXXJbTy2sGZBEOTOJHqGG9bn6S4pr/J0J14IeMChIzcp7RQeibWv/L\
+ ~> Wo0JnPLNsASJ4qtPlJhu4J9fkIIX1shW4UX2xT0P2BXoocqhiLE+QQEGUyL6Nddu\
+ ~> WfQ82wIgiLzZQ5VmdM4siwT2ucXqV4JdtO5CLRiQmk6yC+Q5tlS96hJNYbKKJWTT\
+ ~> BlSoHK1fjDHNLQ+yntgRbXcP6dFyyrtXhWtNrE2tcoOZZ9M5DVBJmYg73wOuNDtD\
+ ~> /J7snD40bWzbSzB1SJ2x0/7zIJqCaEwfKh9geIt6ut3e6ooP7L1OEEastliWIwTb\
+ ~> ZdWa+ppBHcTzHLH5LrFN/zOXd3s4bHAKbMtMpPOj8QJ/shuAEyWyabE+lhFrUJNN\
+ ~> C5vY91VY1bn08lbZsUZzxkqCCYiHgzYvJLzXbzdqhZEyesiF05qV1NQ4/UYJxw5C\
+ ~> R0t5u/crpOyOzs9OIXxHHYV+bLMemERLQ9BpGQjBPiWUitQXdR/WKaRUdK59ls+k\
+ ~> Ne4oKq6shsnlpZr6GinmYLLmtRxTLh2FfDjVR+rMFC5EPeva3KZdckm1Viu8KdGe\
+ ~> oQAfJ0XOvc5tSwm2ZK/Iah/Rxk3pIOsmJiH+8po88xNL2Lz+EiSupXgFOTkadCss\
+ ~> Pepsrj98rr+Hl6W8bQbHMkKLzqLzDKLNAi30+GSHv3zIbrQuOAi4SKCkWPrvXmkf\
+ ~> 6+JcirybGl9QA9dKNIDM55SzHIkqt4HhMsa0hxssseb4Fx3XC7deH09V/g8HDTnt\
+ ~> o8xdQMBXw2sYn12gmFsPnYlTVbbjTU3ncMYZ285Odr00XTfsscBSRD94bImq14fC\
+ ~> PjW4Q5ovKeURTcfbsDSv4XM/0FHa4ShqgzWVxENB9ZnpP8FSc5blN//WlMx5t9yF\
+ ~> jvRESYmzX23ourbcaOpHyz/Iuw+D3Cks9uTWVz7qFwYkatfxbaHewSo6kMgI0sGy\
+ ~> 5oME1KKKANOprkx5a91wenfLecbIK6dcekzOmfkXblgsFoSYDYelvhMeup7KmqD2\
+ ~> x2BNt4NqBB6Z9LLsPWadeZfCzk5RRDv0R80Yy0G2YYT7KBhAweS/wJirZMyF8OTj\
+ ~> OIia7piTu3fbG6Kh7we38s2Dd/mGYTjRxK6uqvbro1UEaRprSIe/3XUQgyJ9s1oT\
+ ~> 8qGLpKjfJEFsnccO2VJ3Vth6iLU73sQhS6/tJY0vKMZEa1lE9j7MVRiWlPAY3b5T\
+ ~> c2nxXqyazryoXVs2GjPgnv4s+0O8aokjBAQ21JzrYzwPg+Ae/fzCYERTsrrUM4dx\
+ ~> wHzpQ1Ery3rq6DlDbwYv/GWjSBWfPQfELaC0V4lqRGmXwGg6rQdDoIqrnDagsTlH\
+ ~> aZJ6FuG9ih5bw0PIr1mXkjo3rLuM8J22TOrDOWloLdUcfpqt928ZxmNUqGEXS9wE\
+ ~> peXRoeFYIyASW7/hOcl3NYEJlW4u1+PDNdf/JAHhcYO2Ju0FzREGNqmrI4m7BRlR\
+ ~> 5U2mDF1XC1MdhvRn980KqgpbOGGaPTnUqOTSx130RkvrkuFLTYI3MCQYWZlO/liY\
+ ~> A129M964pY0Wp7KqkcbDlDOuoLhu+qmq6UsAqdE5YQ2ZgRzLRk2J7fIdMj+hipeM\
+ ~> YoGvdevs3HawJDxBRmu32UlSFrLX28dNKCT0eqiigCLyB72GB3D++rSR9oWyd7ai\
+ ~> BCGRJ2rjO9qReH3rTUzHW2mBj5HYFQ8FaGe6NeMRktYpIXMMN9NcdOcwMW7Ck/0I\
+ ~> tKIkDqQYorK2WFVuVdA5UEvBraFpJ2lmjyPK9yyx6SZ0+hVdWtR4aoASDF0FLjSQ\
+ ~> N9sQk4LjNMC8/P6ane6S+B4BMGRpdPUMSkEltSaMJAvIzB0TjTC1Kn4QLq0wg2bc\
+ ~> Mc0Md9dAqLRNY5b+uxBBsc6tUP5Pr9AdD0EZsPI8D4tQqyWnQXb4hjJ8LzAOSHtH\
+ ~> ri1hvQ/i6ClxOZWKzHX6EP13drexyQLFf+gTLO32VvsL3oOYc6B2IFbGHdTbs7VO\
+ ~> 6skMc5YZKL3K7GFRh7bOjNK049BVi+qjkmmzED21Uj9XXlXfy+NXDwZbajgL6MWk\
+ ~> 9c1X2gWGfSoxfPaBqd8/AElanrQytyuSmod8v1A9KxJt6d2/Z3bRB+jIaWB+Dss2\
+ ~> JVpZL02n1b4vfMwSzJBet814olqB+mYaxbHuEVejV1ohD/eJXVPNTSqfsw6PLD/N\
+ ~> UqyaTDLFBkL2i3r3eF84VlJiCHBa0HUvlI3/Eej9LKoOAzdkolryo/ox0TIQ1hiu\
+ ~> gPOQ90smWKn9SKc2tOIAkU9d++uJ3RzldU2nHqp6sflPRZwVUwa3jy+DYnDFydbA\
+ ~> PFM8fPVNc3euZbM5RV2YjInxRPMy4Z2R+qjtH0LqtMiRzP4l+8W8xnUUVyEX3Yzw\
+ ~> WvXKi4yuwdlGgffdxjs1Vu3nf3kQLToCiD0Mx2tCaYACQCrMQGKWJssRLwLgsvr8\
+ ~> +DVDfflCKBKcBtkPfLIcypvfFweUOYsi3X4+vbS+gfZdebJiJpdLrLixFJiB95kJ\
+ ~> kTTr7QDM0IylH4gVEZLSXgHDsrm13OIhOzWrdjebbFrjq9v6ZZuJoQjU1fcQ7qV6\
+ ~> HyKqnBGqSQBT5HDaqCCVLx9OQ9aHfBVbnkGhdz0tBOlCLPFiJPHbo8EuTFkH6w2R\
+ ~> vbbFG2NADhzKGRsG0cuT01d5V8g3SFEpfjQ6kaDut9YgqaCzvpPD1+Kb4RboP5RA\
+ ~> zvhwU4uFJjrbPQsvlTNtXaYqarpR34uZppU0RdSzr4IUxIbFLiJxHxRDfpNUDa7v\
+ ~> 95xgPNobx7jx68Hbi8I01g8fcO+TtmMS2+2Jv7HW60rnpOYK+kGWEIxzU2HT35Ul\
+ ~> TcsCbs1QeGmMmTrELzp8DkrjgG5ewbZuiHulVz/1DwRnzCZkpA7ZkHixj/0YQ52R\
+ ~> +i+RbOQDzFjfpq9HEJ9c/a4mj/zf16ERSmrN1D+Ady0nKHNSvDkAP+5UK3qT1PV1\
+ ~> zHSiVK9cNhPXBDIESOTr66XEcfkFs2Yr0huu2B4d8/wCui2+dHsdlus6rX2TWmKY\
+ ~> NX44hUSwNaKAWQuT5w2XDEnLMY6PlWiygoZhH5JSI1PVwWOJZsCEA2/FAaKHbcLQ\
+ ~> fBag1aLulbES+90qXLGXarTASw==\
+ \
+~> -----END PKCS7-----\
+ ~> Subject: S/MIME signed+encrypted test\
+ ~> \
+ ~> \
+ ~> .\
+<~  250 2.0.0 Ok: queued as 8F2AA16B12C **************
+\fs24 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 Delivery succeeded.
+\fs22 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 \
+ ~> QUIT\
+<~  221 2.0.0 Bye\
+=== Connection closed with remote host.\
+\
+}
